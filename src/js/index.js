@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 画边
     edges.forEach(edge => {
         const edgeElement = createEdge(nodes[edge.u], nodes[edge.v]);
-        edgeElement.addEventListener('click', selectClickHandler); // 添加点击事件监听器
         graphContainer.appendChild(edgeElement);
     });
     // 添加用于显示累加权值的元素
@@ -53,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     totalWeightContainer.id = 'totalWeight';
     totalWeightContainer.innerText = `Total weight selected: ${totalWeight}`;
     graphContainer.appendChild(totalWeightContainer);
+    // 事件委托
+    graphContainer.addEventListener('click', selectClickHandler);
     // 添加提交答案按钮元素
     const submitButton = createButton('提交答案', 'submitButton', submitAnswer);
     graphContainer.appendChild(submitButton);
